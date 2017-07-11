@@ -2,7 +2,8 @@ require "midi"
 
 class Sequence < ApplicationRecord
 
-  def self.play_arpeggio
+
+  def play_arpeggio
 
     # prompt the user to select an input and output
 
