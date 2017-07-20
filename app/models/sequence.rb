@@ -1,11 +1,20 @@
 require "midi"
 
 class Sequence < ApplicationRecord
+  has_many :notes
 
-
-  def play_arpeggio
-
-    # prompt the user to select an input and output
+  def play_arpeggio(notes)
+    sequence = []
+    if notes.include('stop')
+      puts "STOOOP"
+    else
+      notes.each do |note|
+        sequence.push(note.value)
+      end
+      sequence = sequence.join(" ")
+      byebug
+      # prompt the user to select an input and output
+    end
 
     @input = UniMIDI::Input.use(:first)
     @output = UniMIDI::Output.use(:last)
@@ -14,7 +23,7 @@ class Sequence < ApplicationRecord
       5.times do
         5.times do |oct|
           octave oct
-          %w{C E G B}.each { |n| play n, 0.05 }
+          %w{"#{sequence}"}.each { |n| play n, 0.05 }
         end
       end
     end

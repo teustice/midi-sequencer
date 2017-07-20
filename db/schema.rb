@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711033452) do
+ActiveRecord::Schema.define(version: 20170711193914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "notes", force: :cascade do |t|
+    t.string "value"
+    t.integer "sequence_id"
+  end
+
   create_table "sequences", force: :cascade do |t|
-    t.integer "length"
   end
 
 end

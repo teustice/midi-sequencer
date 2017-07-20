@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     post :play
   end
 
+  resources :notes 
+
 end
