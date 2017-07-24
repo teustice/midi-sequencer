@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :sequence do
     post :play
-    post :listen
+    post :stop
+    post :record
+    post :stop_record
+    post :reset_sequence
   end
 
   resources :notes

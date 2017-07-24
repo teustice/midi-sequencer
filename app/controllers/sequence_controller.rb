@@ -1,6 +1,6 @@
 class SequenceController < ApplicationController
   def index
-    @sequence = Sequence.create()
+    @sequence = Sequence.all.last
     @note = @sequence.notes.new
   end
 
@@ -13,12 +13,41 @@ class SequenceController < ApplicationController
 
   def play
     sequence = Sequence.find(params['sequence_id'])
+    Sequence.initialize_play
     sequence.play_arpeggio(sequence.notes)
+    respond_to do |format|
+      format.js
+    end
   end
 
-  def listen
+  def stop
     sequence = Sequence.find(params['sequence_id'])
-    sequence.listen
+    sequence.stop_arpeggio
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def record
+    sequence = Sequence.find(params['sequence_id'])
+    Sequence.initialize_record
+    sequence.record
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def stop_record
+    sequence = Sequence.find(params['sequence_id'])
+    sequence.stop_recording
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def reset_sequence
+    sequence = Sequence.find(params['sequence_id'])
+    sequence.notes.destroy_all
   end
 
   # def new

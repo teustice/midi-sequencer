@@ -2,5 +2,10 @@
   <%= f.text_field :value %>
   <%= f.submit %>
 <% end %>
-<%= button_to 'Play Sequence', sequence_play_path(@sequence) %>
-<%= button_to 'Record', sequence_listen_path(@sequence) %>
+<%= button_to 'Play', sequence_play_path(@sequence), class: 'start_button', remote: true %>
+<%= button_to 'Stop', sequence_stop_path(@sequence), class: 'stop_button', remote: true %>
+<%= button_to 'Record', sequence_record_path(@sequence), remote: true%>
+<%= button_to 'Stop Recording', sequence_stop_record_path(@sequence), remote: true%>
+<%= button_to 'Reset', sequence_reset_sequence_path(@sequence), remote: true%>
+
+<div id="sequence-info"></div>
