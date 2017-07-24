@@ -16,14 +16,19 @@ class SequenceController < ApplicationController
     sequence.play_arpeggio(sequence.notes)
   end
 
-  def new
+  def listen
+    sequence = Sequence.find(params['sequence_id'])
+    sequence.listen
   end
 
-  def create
-  end
-
-  def destroy
-  end
+  # def new
+  # end
+  #
+  # def create
+  # end
+  #
+  # def destroy
+  # end
 
 
 private

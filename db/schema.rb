@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170711193914) do
   end
 
   create_table "sequences", force: :cascade do |t|
+    t.text "notes"
   end
 
 end

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resources :sequence do
     post :play
+    post :listen
   end
 
-  resources :notes 
+  resources :notes
 
 end

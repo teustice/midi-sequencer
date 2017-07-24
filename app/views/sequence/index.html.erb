@@ -2,6 +2,5 @@
   <%= f.text_field :value %>
   <%= f.submit %>
 <% end %>
-<p id="pudding">pudding</p>
 <%= button_to 'Play Sequence', sequence_play_path(@sequence) %>
-<%= button_to 'Pooooo', sequence_path(@sequence), remote:true %>
+<%= button_to 'Record', sequence_listen_path(@sequence) %>
