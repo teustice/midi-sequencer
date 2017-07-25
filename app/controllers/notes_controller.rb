@@ -6,6 +6,7 @@ class NotesController < ApplicationController
   def create
     @sequence = Sequence.all.last
     @note = @sequence.notes.new(note_params)
+    @note.play_note
     respond_to do |format|
       if @note.save
         format.js
