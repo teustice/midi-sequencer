@@ -2,6 +2,7 @@ class SequenceController < ApplicationController
   def index
     @sequence = Sequence.create
     @note = @sequence.notes.new
+    @scale = ['C','D','E','F','G','A','B','C']
   end
 
   def show
