@@ -13,10 +13,22 @@ class SequenceController < ApplicationController
     end
   end
 
+  def update
+    @sequence = Sequence.find(params['id'])
+    respond_to do |format|
+      if @sequence.update(sequence_params)
+        format.html { redirect_to root_path }
+        format.js
+      else
+        format.html { redirect_to root_path }
+      end
+    end
+  end
+
   def play
     sequence = Sequence.find(params['sequence_id'])
     Sequence.initialize_play
-    sequence.play_arpeggio(sequence.notes)
+    sequence.play_arpeggio(sequence.notes, sequence.tempo)
     respond_to do |format|
       format.js
     end
@@ -65,7 +77,7 @@ class SequenceController < ApplicationController
 
 
 private
-  # def sequence_params
-  #   params.require(:sequence).permit(:note)
-  # end
+  def sequence_params
+    params.require(:sequence).permit(:tempo, :notes)
+  end
 end

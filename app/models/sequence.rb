@@ -11,18 +11,17 @@ class Sequence < ApplicationRecord
     @@playing = true
   end
 
-  def play_arpeggio(notes)
+  def play_arpeggio(notes, tempo)
     if @@playing
       sequence = []
       notes.each do |note|
         sequence.push(note.value)
       end
-
       # Play sequence
       MIDI.using(@@output) do
-        sequence.each { |n| play n, 0.2 }
+        sequence.each { |n| play n, tempo }
       end
-      self.play_arpeggio(notes)
+      self.play_arpeggio(notes, tempo)
     end
   end
 
