@@ -1,6 +1,6 @@
 $(function(){
   $('#sequence-info').text('');
   '<% @sequence.notes.each do |note| %>'
-    $('#sequence-info').append("<%= note.value %>");
+    $('#sequence-info').append("<%= note.value %> ");
   '<% end %>'
 })

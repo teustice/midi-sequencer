@@ -30,27 +30,27 @@ class Sequence < ApplicationRecord
     @@playing = false
   end
 
-  def self.initialize_record
-    @@recording = true
-  end
-
-  def record
-    sequence = self
-    MIDI.using(@@input) do
-      count = 0
-      thru_except :note do |message|
-        if @@recording && (count % 2 == 0)
-          # only takes evens to not record note release
-          sequence.notes.create(value: "#{message.name}")
-          puts "Created: #{message.name}"
-        end
-        count += 1
-      end
-    end
-  end
-
-
-  def stop_recording
-    @@recording = false
-  end
+  # def self.initialize_record
+  #   @@recording = true
+  # end
+  #
+  # def record
+  #   sequence = self
+  #   MIDI.using(@@input) do
+  #     count = 0
+  #     thru_except :note do |message|
+  #       if @@recording && (count % 2 == 0)
+  #         # only takes evens to not record note release
+  #         sequence.notes.create(value: "#{message.name}")
+  #         puts "Created: #{message.name}"
+  #       end
+  #       count += 1
+  #     end
+  #   end
+  # end
+  #
+  #
+  # def stop_recording
+  #   @@recording = false
+  # end
 end

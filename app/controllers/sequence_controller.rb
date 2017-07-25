@@ -1,8 +1,9 @@
 class SequenceController < ApplicationController
   def index
-    @sequence = Sequence.create
+    @sequence = Sequence.all.last
     @note = @sequence.notes.new
-    @scale = ['C','D','E','F','G','A','B','C']
+    @scale = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B','C']
+    @octave = params[:octave].to_i || 4
   end
 
   def show
@@ -29,27 +30,29 @@ class SequenceController < ApplicationController
     end
   end
 
-  def record
-    sequence = Sequence.find(params['sequence_id'])
-    Sequence.initialize_record
-    sequence.record
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def stop_record
-    @sequence = Sequence.find(params['sequence_id'])
-    @sequence.stop_recording
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def reset_sequence
     @sequence = Sequence.find(params['sequence_id'])
     @sequence.notes.destroy_all
   end
+
+  #
+  # def record
+  #   sequence = Sequence.find(params['sequence_id'])
+  #   Sequence.initialize_record
+  #   sequence.record
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
+  #
+  # def stop_record
+  #   @sequence = Sequence.find(params['sequence_id'])
+  #   @sequence.stop_recording
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
+
 
   # def new
   # end
