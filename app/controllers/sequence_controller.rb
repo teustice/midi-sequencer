@@ -1,6 +1,6 @@
 class SequenceController < ApplicationController
   def index
-    @sequence = Sequence.all.last
+    @sequence = Sequence.create
     @note = @sequence.notes.new
   end
 
@@ -61,7 +61,7 @@ class SequenceController < ApplicationController
 
 
 private
-  def sequence_params
-    params.require(:photo).permit(:note)
-  end
+  # def sequence_params
+  #   params.require(:sequence).permit(:note)
+  # end
 end
