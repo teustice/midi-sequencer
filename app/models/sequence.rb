@@ -19,7 +19,7 @@ class Sequence < ApplicationRecord
       end
       # Play sequence
       MIDI.using(@@output) do
-        sequence.each { |n| play n, tempo }
+        sequence.each { |n| play n, (60/tempo) }
       end
       self.play_arpeggio(notes, tempo)
     end
