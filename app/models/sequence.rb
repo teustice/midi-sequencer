@@ -7,8 +7,11 @@ class Sequence < ApplicationRecord
   @@playing = false
   @@recording = false
 
-  def self.initialize_play
+  def initialize_play
     @@playing = true
+    # Ensures only one instance of play
+    self.playing = true
+    self.save
   end
 
   def play_arpeggio(notes, tempo, resolution, direction)
@@ -43,6 +46,8 @@ class Sequence < ApplicationRecord
 
   def stop_arpeggio
     @@playing = false
+    self.playing = false
+    self.save
   end
 
   # def self.initialize_record

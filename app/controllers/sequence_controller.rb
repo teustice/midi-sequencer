@@ -27,11 +27,14 @@ class SequenceController < ApplicationController
 
   def play
     sequence = Sequence.find(params['sequence_id'])
-    Sequence.initialize_play
-    sorted_notes = sequence.notes.sort_by {|x| x.created_at}
-    sequence.play_arpeggio(sorted_notes, sequence.tempo, sequence.resolution, sequence.direction)
-    respond_to do |format|
-      format.js
+    puts sequence.playing
+    if sequence.playing == false
+      sequence.initialize_play
+      sorted_notes = sequence.notes.sort_by {|x| x.created_at}
+      sequence.play_arpeggio(sorted_notes, sequence.tempo, sequence.resolution, sequence.direction)
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

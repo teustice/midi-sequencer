@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725220456) do
+ActiveRecord::Schema.define(version: 20170725234005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170725220456) do
     t.decimal "tempo"
     t.integer "resolution"
     t.string "direction"
+    t.boolean "playing"
   end
 
 end

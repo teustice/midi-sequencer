@@ -5,4 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Sequence.create(tempo: 120, resolution: 2, direction: 'up')
+Sequence.create(tempo: 120, resolution: 2, direction: 'up', playing: false)
