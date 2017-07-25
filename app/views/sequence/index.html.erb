@@ -1,7 +1,3 @@
-<%= form_for @note, remote: true do |f| %>
-  <%= f.text_field :value %>
-  <%= f.submit %>
-<% end %>
 <%= button_to 'Play', sequence_play_path(@sequence, tempo: @tempo), class: 'start_button', remote: true %>
 <%= button_to 'Stop', sequence_stop_path(@sequence), class: 'stop_button', remote: true %>
 <%= button_to 'Reset', sequence_reset_sequence_path(@sequence), class: 'stop_button', remote: true%>
@@ -16,11 +12,15 @@
     <%= form.radio_button :resolution, 2 %> 1/2
     <%= form.radio_button :resolution, 4 %> 1/4
     <%= form.radio_button :resolution, 8 %> 1/8
+    <%= form.label :direction %>
+    <%= form.radio_button :direction, 'up' %> Up
+    <%= form.radio_button :direction, 'down' %> Down
+    <%= form.radio_button :direction, 'updown' %> Up/Down
   </div>
   <%= form.submit %>
 <% end %>
 
-<p id="tempo-container">Tempo: <%= @sequence.tempo %> | Resolution: 1/<%= @sequence.resolution %></p>
+<p id="tempo-container">Tempo: <%= @sequence.tempo %> | Resolution: 1/<%= @sequence.resolution %> | Direction: <%= @sequence.direction %></p>
 <div class="octaves">
   <p>octave:</p>
   <%= radio_button_tag 'octave', '1' %> 1

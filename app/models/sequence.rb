@@ -11,17 +11,33 @@ class Sequence < ApplicationRecord
     @@playing = true
   end
 
-  def play_arpeggio(notes, tempo, resolution)
+  def play_arpeggio(notes, tempo, resolution, direction)
     if @@playing
       sequence = []
-      notes.each do |note|
-        sequence.push(note.value)
+      if direction == 'up'
+        notes.each do |note|
+          sequence.push(note.value)
+        end
+      elsif direction == 'down'
+        notes.reverse.each do |note|
+          sequence.push(note.value)
+        end
+      elsif direction == 'updown'
+        notes.each do |note|
+          sequence.push(note.value)
+        end
+        notes.reverse.each_with_index do |note, i|
+          if i != 0 && i != (notes.length - 1)
+            sequence.push(note.value)
+          end
+        end
       end
+
       # Play sequence
       MIDI.using(@@output) do
         sequence.each { |n| play n, (60/tempo/resolution) }
       end
-      self.play_arpeggio(notes, tempo, resolution)
+      self.play_arpeggio(notes, tempo, resolution, direction)
     end
   end
 

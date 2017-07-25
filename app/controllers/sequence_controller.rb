@@ -28,7 +28,7 @@ class SequenceController < ApplicationController
   def play
     sequence = Sequence.find(params['sequence_id'])
     Sequence.initialize_play
-    sequence.play_arpeggio(sequence.notes, sequence.tempo, sequence.resolution)
+    sequence.play_arpeggio(sequence.notes, sequence.tempo, sequence.resolution, sequence.direction)
     respond_to do |format|
       format.js
     end
@@ -78,6 +78,6 @@ class SequenceController < ApplicationController
 
 private
   def sequence_params
-    params.require(:sequence).permit(:tempo, :resolution, :notes)
+    params.require(:sequence).permit(:tempo, :resolution, :direction, :notes)
   end
 end
