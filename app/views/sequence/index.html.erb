@@ -12,11 +12,15 @@
   <div class="field">
     <%= form.label :tempo %>
     <%= form.text_field :tempo, id: :tempo %>
+    <%= form.label :resolution %>
+    <%= form.radio_button :resolution, 2 %> 1/2
+    <%= form.radio_button :resolution, 4 %> 1/4
+    <%= form.radio_button :resolution, 8 %> 1/8
   </div>
   <%= form.submit %>
 <% end %>
 
-<p id="tempo-container">Tempo: <%= @sequence.tempo %> </p>
+<p id="tempo-container">Tempo: <%= @sequence.tempo %> | Resolution: 1/<%= @sequence.resolution %></p>
 <div class="octaves">
   <p>octave:</p>
   <%= radio_button_tag 'octave', '1' %> 1

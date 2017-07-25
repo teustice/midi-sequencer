@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725204331) do
+ActiveRecord::Schema.define(version: 20170725211627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170725204331) do
   create_table "sequences", force: :cascade do |t|
     t.datetime "created_at"
     t.decimal "tempo"
+    t.integer "resolution"
   end
 
 end
