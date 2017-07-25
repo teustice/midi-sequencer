@@ -23,9 +23,15 @@
       <% @octave += 1 %>
     <% end %>
     <%= link_to notes_path(note: {value: "#{@scale[i] + @octave.to_s}"}), method:'post', remote:true do %>
-      <div style='background-color: black; width: 50px; height: 200px; display:inline-block; margin-right: 10px;'id='trigger<%= i %>'>
-        <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
-      </div>
+      <% if @scale[i].split('').last == '#' %>
+        <div class="black-keys" id='trigger<%= i %>'>
+          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
+        </div>
+      <% else %>
+        <div class="white-keys" id='trigger<%= i %>'>
+          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

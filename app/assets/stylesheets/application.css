@@ -13,7 +13,42 @@
  *= require_tree .
  *= require_self
  */
+a {
+  color: black;
+}
+
+#input-board {
+  margin-top: 115px;
+}
 .key-letters {
-  color: white;
   text-align: center;
+  margin-top: 140px;
+  text-decoration: none;
+}
+
+.white-keys {
+  background-color: white;
+  color: black;
+  width: 50px;
+  height: 280px;
+  display:inline-block;
+  margin-right: 5px;
+  margin-top: -50px;
+  border: 1px black solid;
+}
+
+.white-keys .key-letters {
+  margin-top: 230px;
+}
+
+.black-keys {
+  color: white;
+  background-color: black;
+  width: 50px;
+  height: 185px;
+  display:inline-block;
+  margin-right: 5px;
+  margin-left: -25px;
+  top: 30%;
+  position: absolute;
 }
