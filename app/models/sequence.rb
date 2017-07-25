@@ -39,18 +39,16 @@ class Sequence < ApplicationRecord
     MIDI.using(@@input) do
       count = 0
       thru_except :note do |message|
-        if @@recording
+        if @@recording && (count % 2 == 0)
           # only takes evens to not record note release
-          if count % 2 == 0
-            sequence.notes.create(value: "#{message.name}")
-            puts "Created: #{message.name}"
-            # sequence.save
-          end
-          count += 1
+          sequence.notes.create(value: "#{message.name}")
+          puts "Created: #{message.name}"
         end
+        count += 1
       end
     end
   end
+
 
   def stop_recording
     @@recording = false

@@ -38,16 +38,16 @@ class SequenceController < ApplicationController
   end
 
   def stop_record
-    sequence = Sequence.find(params['sequence_id'])
-    sequence.stop_recording
+    @sequence = Sequence.find(params['sequence_id'])
+    @sequence.stop_recording
     respond_to do |format|
       format.js
     end
   end
 
   def reset_sequence
-    sequence = Sequence.find(params['sequence_id'])
-    sequence.notes.destroy_all
+    @sequence = Sequence.find(params['sequence_id'])
+    @sequence.notes.destroy_all
   end
 
   # def new
