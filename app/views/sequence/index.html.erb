@@ -11,8 +11,12 @@
 
 <div id="input-board">
   <% 11.times do |i| %>
-    <%= link_to sequence_play_path(@sequence), method:'post' do %>
+    <%= link_to notes_path(note: {value: "A"}), method:'post', remote:true do %>
       <div style='background-color: black; width: 50px; height: 200px; display:inline-block; margin-right: 10px;'id='trigger<%= i %>'></div>
     <% end %>
   <% end %>
+</div>
+
+<div id="sequence-info">
+
 </div>
