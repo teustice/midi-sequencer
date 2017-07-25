@@ -45,6 +45,7 @@ class SequenceController < ApplicationController
   def reset_sequence
     @sequence = Sequence.find(params['sequence_id'])
     @sequence.notes.destroy_all
+    @sequence.stop_arpeggio
   end
 
   #

@@ -12,7 +12,7 @@ class Sequence < ApplicationRecord
   end
 
   def play_arpeggio(notes, tempo, resolution, direction)
-    if @@playing
+    if @@playing && notes.any?
       sequence = []
       if direction == 'up'
         notes.each do |note|
