@@ -1,7 +1,7 @@
 <div id="sequence-info">
-    <% @sequence.notes.each do |note| %>
-      <%= link_to "#{note.value}", note, method: 'delete', remote:true %>
-    <% end %>
+  <% @sequence.notes.each do |note| %>
+    <%= link_to "#{note.value}", note, method: 'delete', remote:true %>
+  <% end %>
 </div>
 
 <%= render 'keyboard' %>

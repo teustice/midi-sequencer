@@ -28,22 +28,31 @@ a {
   text-decoration: none;
 }
 
+a:hover, a:visited, a:active {
+  text-decoration: none;
+}
+
 #sequence-info {
   height: 80px;
   text-align: center;
   margin-top: 80px;
-  font-size: 25px;
-  /*justify-content: flex-end | flex-end | center | space-between | space-around | space-evenly;*/
 }
 
 #sequence-info a {
-  background-color: lightgreen;
+  background-color: lightgrey;
   color: black;
-  border-radius: 5px;
+  border-radius: 2px;
+  font-size: 25px;
+}
+
+#sequence-info a:nth-child(17) {
+  display: none;
 }
 
 #sequence-info a:hover {
-  color: white;
+  text-decoration: none;
+  color: lightgrey;
+  background-color: crimson;
 }
 
 #input-board {
