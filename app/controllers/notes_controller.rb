@@ -17,6 +17,15 @@ class NotesController < ApplicationController
     end
   end
 
+  def destroy
+    @sequence = Sequence.all.last
+    @note = Note.find(params[:id])
+    @note.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def note_params
     params.require(:note).permit(:value)

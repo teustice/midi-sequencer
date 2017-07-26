@@ -20,7 +20,7 @@
   <%= form.submit %>
 <% end %>
 
-<p id="tempo-container">Tempo: <%= @sequence.tempo %> | Resolution: 1/<%= @sequence.resolution %> | Direction: <%= @sequence.direction %></p>
+<p id="tempo-container">Tempo: <%= @sequence.tempo %> bpm | Resolution: 1/<%= @sequence.resolution %> | Direction: <%= @sequence.direction %></p>
 <div class="octaves">
   <p>octave:</p>
   <%= radio_button_tag 'octave', '1' %> 1
@@ -49,7 +49,11 @@
   <% end %>
 </div>
 
-<div id="sequence-info"></div>
+<div id="sequence-info">
+  <% @sequence.notes.each do |note| %>
+    <%= link_to "#{note.value}", note, method: 'delete', remote:true %> 
+  <% end %>
+</div>
 
 <script>
   $(function(){
@@ -58,10 +62,5 @@
       var url = root_path + "?octave=" + $(this).val();
       window.location.replace(url);
     });
-
-    $('#sequence-info').text('');
-    '<% @sequence.notes.each do |note| %>'
-      $('#sequence-info').append("<%= note.value %> ");
-    '<% end %>'
   });
 </script>
