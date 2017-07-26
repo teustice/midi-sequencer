@@ -13,13 +13,38 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   font-family: 'Inconsolata', monospace;
+ }
 a {
   color: black;
+  text-decoration: none;
+}
+
+
+#sequence-info {
+  height: 80px;
+  text-align: center;
+  margin-top: 80px;
+  font-size: 25px;
+  /*justify-content: flex-end | flex-end | center | space-between | space-around | space-evenly;*/
+}
+
+#sequence-info a {
+  background-color: lightgreen;
+  color: black;
+  border-radius: 5px;
+}
+
+#sequence-info a:hover {
+  color: white;
 }
 
 #input-board {
-  margin-top: 115px;
+  margin-top: 38px;
+  text-align: center;
 }
+
 .key-letters {
   text-align: center;
   margin-top: 140px;
@@ -49,6 +74,6 @@ a {
   display:inline-block;
   margin-right: 5px;
   margin-left: -25px;
-  top: 37.3%;
+  top: 20.4%;
   position: absolute;
 }

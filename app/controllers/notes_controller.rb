@@ -7,12 +7,14 @@ class NotesController < ApplicationController
     @sequence = Sequence.all.last
     @note = @sequence.notes.new(note_params)
     @note.play_note
-    respond_to do |format|
-      if @note.save
-        format.js
-      else
-        format.html { render root_path }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+    if @sequence.notes.count < 16
+      respond_to do |format|
+        if @note.save
+          format.js
+        else
+          format.html { render root_path }
+          format.json { render json: @note.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

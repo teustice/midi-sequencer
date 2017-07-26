@@ -1,3 +1,29 @@
+<div id="sequence-info">
+    <% @sequence.notes.each do |note| %>
+      <%= link_to "#{note.value}", note, method: 'delete', remote:true %>
+    <% end %>
+</div>
+
+<div id="input-board">
+  <% 13.times do |i| %>
+    <% if i == 12 %>
+      <% @octave += 1 %>
+    <% end %>
+    <%= link_to notes_path(note: {value: "#{@scale[i] + @octave.to_s}"}), method:'post', remote:true do %>
+      <% if @scale[i].split('').last == '#' %>
+        <div class="black-keys" id='trigger<%= i %>'>
+          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
+        </div>
+      <% else %>
+        <div class="white-keys" id='trigger<%= i %>'>
+          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+
 <%= button_to 'Play', sequence_play_path(@sequence, tempo: @tempo), class: 'sequencer-control', remote: true %>
 <%= button_to 'Stop', sequence_stop_path(@sequence), class: 'stop_button', remote: true %>
 <%= button_to 'Reset', sequence_reset_sequence_path(@sequence), class: 'sequencer-control', remote: true%>
@@ -28,31 +54,6 @@
   <%= radio_button_tag 'octave', '3' %> 3
   <%= radio_button_tag 'octave', '4' %> 4
   <%= radio_button_tag 'octave', '5' %> 5
-</div>
-
-<div id="input-board">
-  <% 13.times do |i| %>
-    <% if i == 12 %>
-      <% @octave += 1 %>
-    <% end %>
-    <%= link_to notes_path(note: {value: "#{@scale[i] + @octave.to_s}"}), method:'post', remote:true do %>
-      <% if @scale[i].split('').last == '#' %>
-        <div class="black-keys" id='trigger<%= i %>'>
-          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
-        </div>
-      <% else %>
-        <div class="white-keys" id='trigger<%= i %>'>
-          <h3 class="key-letters"><%= @scale[i] + @octave.to_s %></h3>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
-<div id="sequence-info">
-  <% @sequence.notes.each do |note| %>
-    <%= link_to "#{note.value}", note, method: 'delete', remote:true %> 
-  <% end %>
 </div>
 
 <script>

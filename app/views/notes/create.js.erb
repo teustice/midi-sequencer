@@ -1,6 +1,6 @@
 $(function(){
   $('#sequence-info').text('');
   '<% @sequence.notes.each do |note| %>'
-    $('#sequence-info').append("<%= j link_to "#{note.value}", note, method: 'delete', remote:true %> ");
+    $('#sequence-info').append("<%= j link_to note.value, note, method: 'delete', remote:true %> ");
   '<% end %>'
-})
+});
