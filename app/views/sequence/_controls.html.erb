@@ -1,0 +1,52 @@
+<div class="play-head">
+  <%= button_to sequence_play_path(@sequence, tempo: @tempo), class: 'sequencer-control button-clean', remote: true do %>
+    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+  <% end %>
+  <%= button_to sequence_stop_path(@sequence), class: 'stop_button button-clean', remote: true do %>
+    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+  <% end %>
+  <%= button_to sequence_reset_sequence_path(@sequence), class: 'sequencer-control button-clean', remote: true do %>
+    <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 control-left">
+    <%= form_for @sequence, remote:true do |form| %>
+    <div class="field">
+      <%= form.label :tempo %>
+      <%= form.text_field :tempo, id: :tempo %> <br>
+      <%= form.label :resolution %>
+      <%= form.radio_button :resolution, 2 %> 1/2
+      <%= form.radio_button :resolution, 4 %> 1/4
+      <%= form.radio_button :resolution, 8 %> 1/8 <br>
+      <%= form.label :direction %>
+      <%= form.radio_button :direction, 'up' %> Up
+      <%= form.radio_button :direction, 'down' %> Down
+      <%= form.radio_button :direction, 'updown' %> Up/Down
+    </div>
+    <%= form.submit "Update Sequence", class: 'button-clean'%>
+    <% end %>
+  </div>
+  <div class="col-sm-6 control-right">
+    <div class="octaves">
+      <p>octave:</p>
+      <%= radio_button_tag 'octave', '1' %> 1
+      <%= radio_button_tag 'octave', '2' %> 2
+      <%= radio_button_tag 'octave', '3' %> 3
+      <%= radio_button_tag 'octave', '4' %> 4
+      <%= radio_button_tag 'octave', '5' %> 5
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(function(){
+    $("input[name=octave]").change(function(){
+      var root_path = "<%= root_path %>"
+      var url = root_path + "?octave=" + $(this).val();
+      window.location.replace(url);
+    });
+  });
+</script>
