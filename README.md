@@ -2,7 +2,7 @@
 
 This application is designed to sequence, and output midi data to an external midi instrument, or have it routed to a digital audio workstation such as Ableton. The midi I/O features of this application were handled using Ari Russo's <a href="https://github.com/arirusso/micromidi">MicroMidi</a> gem.
 
-![]()
+![](https://github.com/teustice/midi-sequencer/blob/master/app/assets/images/Screen%20Shot%202017-07-27%20at%2010.14.12%20AM.png)
 
 ### Dependencies
 * Ruby >= 2.3.1
