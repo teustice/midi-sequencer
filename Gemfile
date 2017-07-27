@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # Use postgresql as the database for Active Record
@@ -34,9 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem "micromidi"
 gem 'jquery-rails'
-gem 'kaminari'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +49,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  gem 'pg'
+  gem "micromidi"
+  gem 'jquery-rails'
+  gem 'turbolinks', '~> 5'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
