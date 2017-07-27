@@ -41,11 +41,7 @@ GEM
     alsa-rawmidi (0.3.2)
       ffi (~> 1.0)
     arel (8.0.0)
-    autoprefixer-rails (7.1.2.3)
-      execjs
     bindex (0.5.0)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.2)
@@ -71,18 +67,6 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    kaminari (1.0.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.1)
-      kaminari-activerecord (= 1.0.1)
-      kaminari-core (= 1.0.1)
-    kaminari-actionview (1.0.1)
-      actionview
-      kaminari-core (= 1.0.1)
-    kaminari-activerecord (1.0.1)
-      activerecord
-      kaminari-core (= 1.0.1)
-    kaminari-core (1.0.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -150,7 +134,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    ruby_dep (1.3.1)
+    ruby_dep (1.5.0)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -202,13 +186,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
-  bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
-  kaminari
   listen (>= 3.0.5, < 3.2)
   micromidi
   pg (~> 0.18)
@@ -223,4 +204,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.2
+   1.15.1
