@@ -38,7 +38,13 @@ class Sequence < ApplicationRecord
 
       # Play sequence
       MIDI.using(@@output) do
-        sequence.each { |n| play n, (60/tempo/resolution) }
+        sequence.each do |n|
+          if n == 'R'
+            sleep (60/tempo/resolution)
+          else
+            play n, (60/tempo/resolution)
+          end
+        end
       end
       self.play_arpeggio(notes, tempo, resolution, direction)
     end

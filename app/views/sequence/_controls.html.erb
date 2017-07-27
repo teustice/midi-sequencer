@@ -8,6 +8,10 @@
   <%= button_to sequence_reset_sequence_path(@sequence), class: 'sequencer-control button-clean', remote: true do %>
     <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
   <% end %>
+
+  <div class="rest-button">
+    <%= button_to 'rest', notes_path(note: {value: "R"}), method:'post', class:'button-clean', remote:true %>
+  </div>
 </div>
 
 <div class="row">

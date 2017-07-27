@@ -6,7 +6,9 @@ class NotesController < ApplicationController
   def create
     @sequence = Sequence.all.last
     @note = @sequence.notes.new(note_params)
-    @note.play_note
+    if @note.value != 'R'
+      @note.play_note
+    end
     if @sequence.notes.count < 16
       respond_to do |format|
         if @note.save

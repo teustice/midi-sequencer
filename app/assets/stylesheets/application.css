@@ -115,3 +115,15 @@ a:hover, a:visited, a:active {
 .glyphicon-stop {
   color: crimson;
 }
+
+.rest-button {
+  display: inline-block;
+  float:right;
+}
+
+.rest-button input {
+  height: 31px;
+  margin-right: 3px;
+  background-color: black;
+  color: white;
+}
