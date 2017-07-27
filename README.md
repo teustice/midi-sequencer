@@ -1,24 +1,34 @@
-# README
+# Midi Sequencer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is designed to sequence, and output midi data to an external midi instrument, or have it routed to a digital audio workstation such as Ableton. The midi I/O features of this application were handled using Ari Russo's <a href="https://github.com/arirusso/micromidi">MicroMidi</a> gem.
 
-Things you may want to cover:
+![]()
 
-* Ruby version
+### Dependencies
+* Ruby >= 2.3.1
+* Rails >= 5.1.2
+* postgres
+* bundler
 
-* System dependencies
+### Installation
+```
+$ postgres
+$ git clone https://github.com/teustice/midi-sequencer
+$ cd midi-sequencer
+$ bundle install
+$ rails db:setup
+$ rails db:seed
+$ rails s
+```
 
-* Configuration
+visit <a href="https://localhost:3000">localhost:3000</a> in your browser
 
-* Database creation
+### Midi Setup
+* Midi channel designation is accessible in the Sequence model.
+* Currently the application will use the first Midi I/O that it finds.
 
-* Database initialization
+### Authors
+Tanner Eustice
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### License
+MIT &copy; 2017
