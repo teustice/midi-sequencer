@@ -4,6 +4,7 @@ class SequenceController < ApplicationController
     @note = @sequence.notes.new
     @scale = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B','C']
     @octave = params[:octave].to_i || 4
+    @connected_devices = Sequence.display_midi_devices
   end
 
   def show

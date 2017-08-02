@@ -2,10 +2,19 @@ require "midi"
 
 class Sequence < ApplicationRecord
   has_many :notes
-  @@output = UniMIDI::Output.use(:last)
-  @@input = UniMIDI::Input.use(:last)
+  # @@output = UniMIDI::Output.gets
+  # @@input = UniMIDI::Input.gets
+  @@output = UniMIDI::Output.all[0].open
+  # @@input = UniMIDI::Input.all[0].open
   @@playing = false
   @@recording = false
+
+  def self.display_midi_devices
+    devices = []
+    UniMIDI::Output.all.each do |device|
+      devices.push({id: device.id, name: device.name})
+    end
+  end
 
   def initialize_play
     @@playing = true
