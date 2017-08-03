@@ -4,16 +4,35 @@ class Sequence < ApplicationRecord
   has_many :notes
   # @@output = UniMIDI::Output.gets
   # @@input = UniMIDI::Input.gets
-  @@output = UniMIDI::Output.all[0].open
+  @@output = nil
   # @@input = UniMIDI::Input.all[0].open
   @@playing = false
   @@recording = false
+
+  def self.current_device
+    @@output
+  end
 
   def self.display_midi_devices
     devices = []
     UniMIDI::Output.all.each do |device|
       devices.push({id: device.id, name: device.name})
     end
+  end
+
+  def self.find_midi_device(device_id)
+    found_device = {}
+    UniMIDI::Output.all.each do |device|
+      if device.id == device_id.to_i
+        found_device = device
+      end
+    end
+    found_device
+  end
+
+  def self.set_midi_device(device_id)
+    @@output = Sequence.find_midi_device(device_id)
+    puts @@output
   end
 
   def initialize_play

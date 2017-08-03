@@ -9,5 +9,9 @@
 </div>
 
 <% @connected_devices.each do |device| %>
-  <li><%= device.name %></li>
+  <li><%= link_to device.name, sequence_set_device_path(sequence_id: @sequence.id, device_id: device.id) ,method: 'post' %></li>
+<% end %>
+
+<% if @current_device %>
+  <h1><%= @current_device.name %></h1>
 <% end %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post :record
     post :stop_record
     post :reset_sequence
+    post :set_device
   end
 
   resources :notes

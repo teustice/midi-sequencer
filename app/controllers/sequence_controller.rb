@@ -5,6 +5,12 @@ class SequenceController < ApplicationController
     @scale = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B','C']
     @octave = params[:octave].to_i || 4
     @connected_devices = Sequence.display_midi_devices
+    @current_device = Sequence.current_device
+  end
+
+  def set_device
+    Sequence.set_midi_device(params[:device_id])
+    redirect_to '/'
   end
 
   def show
