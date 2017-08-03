@@ -127,3 +127,6 @@ a:hover, a:visited, a:active {
   background-color: black;
   color: white;
 }
+.devices {
+ display: inline;
+}

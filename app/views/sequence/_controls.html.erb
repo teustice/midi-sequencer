@@ -41,6 +41,17 @@
       <%= radio_button_tag 'octave', '4' %> 4
       <%= radio_button_tag 'octave', '5' %> 5
     </div>
+    <br>
+    <div class="devices">
+      <% if @current_device %>
+        <p>midi outputting to: <%= @current_device.name %></p>
+      <% end %>
+
+      <p>change midi output:</p>
+      <% @connected_devices.each do |device| %>
+        <p><%= link_to device.name, sequence_set_device_path(sequence_id: @sequence.id, device_id: device.id), method: 'post' %></p>
+      <% end %>
+    </div>
   </div>
 </div>
 
