@@ -1,5 +1,5 @@
 <div class="play-head">
-  <%= button_to sequence_play_path(@sequence, tempo: @tempo), class: 'sequencer-control button-clean', remote: true do %>
+  <%= button_to sequence_play_path(@sequence, tempo: @tempo), class: 'sequencer-control button-clean play-button', remote: true do %>
     <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
   <% end %>
   <%= button_to sequence_stop_path(@sequence), class: 'stop_button button-clean', remote: true do %>

@@ -15,7 +15,8 @@
  */
 
 body {
- font-family: 'Inconsolata', monospace;
+  background-color: ghostwhite;
+  font-family: 'Inconsolata', monospace;
 }
 
 .button-clean {
@@ -39,9 +40,9 @@ a:hover, a:visited, a:active {
 }
 
 #sequence-info a {
-  background-color: lightgrey;
   color: black;
-  border-radius: 2px;
+  border: 1px solid black;
+  padding: 2px;
   font-size: 25px;
 }
 
@@ -51,7 +52,7 @@ a:hover, a:visited, a:active {
 
 #sequence-info a:hover {
   text-decoration: none;
-  color: lightgrey;
+  color: ghostwhite;
   background-color: crimson;
 }
 
@@ -129,4 +130,8 @@ a:hover, a:visited, a:active {
 }
 .devices {
  display: inline;
+}
+
+.highlighted {
+  background-color: yellow;
 }
